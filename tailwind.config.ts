@@ -57,6 +57,31 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Mediterranean custom colors
+        terracotta: "hsl(var(--terracotta))",
+        sand: "hsl(var(--sand))",
+        "sea-blue": "hsl(var(--sea-blue))",
+        "sea-light": "hsl(var(--sea-light))",
+        cream: "hsl(var(--cream))",
+        golden: "hsl(var(--golden))",
+      },
+      fontFamily: {
+        heading: ["var(--font-heading)", "serif"],
+        body: ["var(--font-body)", "sans-serif"],
+      },
+      backgroundImage: {
+        "gradient-hero": "var(--gradient-hero)",
+        "gradient-sunset": "var(--gradient-sunset)",
+        "gradient-sea": "var(--gradient-sea)",
+      },
+      boxShadow: {
+        soft: "var(--shadow-soft)",
+        elegant: "var(--shadow-elegant)",
+        card: "var(--shadow-card)",
+      },
+      transitionTimingFunction: {
+        smooth: "var(--transition-smooth)",
+        elegant: "var(--transition-elegant)",
       },
       borderRadius: {
         lg: "var(--radius)",
