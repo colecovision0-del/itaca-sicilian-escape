@@ -1,33 +1,31 @@
-import React from 'react';
-import { Wifi, Car, Coffee, Wind, Waves, Mountain } from 'lucide-react';
+import React, { useState } from 'react';
+import { Wifi, Car, Coffee, Wind, Waves, Users } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Button } from './ui/button';
+import { GalleryPreview } from './GalleryPreview';
+import { ImageGallery } from './ImageGallery';
 import roomImage from '../assets/room-deluxe.jpg';
 
 export const RoomsSection: React.FC = () => {
   const { t } = useLanguage();
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
-  const rooms = [
+  const apartments = [
     {
-      name: t('deluxeRoom'),
+      name: 'Apartment Marina',
       price: '€120',
       image: roomImage,
       amenities: [Wifi, Coffee, Wind, Car],
-      features: ['25 sqm', 'Garden View', 'King Bed', 'Private Balcony']
+      features: ['50 sqm', 'Sea View', 'King Bed', 'Kitchen', 'Balcony'],
+      description: 'Spacious apartment with stunning sea views and modern amenities'
     },
     {
-      name: t('seaView'),
-      price: '€180',
+      name: 'Apartment Sicilia',
+      price: '€140',
       image: roomImage,
-      amenities: [Wifi, Coffee, Waves, Wind],
-      features: ['35 sqm', 'Sea View', 'King Bed', 'Terrace', 'Premium Amenities']
-    },
-    {
-      name: t('familySuite'),
-      price: '€220',
-      image: roomImage,
-      amenities: [Wifi, Coffee, Wind, Mountain],
-      features: ['50 sqm', 'Garden & Partial Sea View', '2 Bedrooms', 'Living Area']
+      amenities: [Wifi, Coffee, Waves, Users],
+      features: ['60 sqm', 'Garden View', '2 Bedrooms', 'Living Area', 'Terrace'],
+      description: 'Family-friendly apartment perfect for longer stays'
     }
   ];
 
@@ -37,39 +35,42 @@ export const RoomsSection: React.FC = () => {
         {/* Header */}
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-4xl lg:text-5xl font-heading font-bold text-foreground">
-            {t('roomsTitle')}
+            Our Apartments
           </h2>
           <div className="w-20 h-1 bg-gradient-sea rounded-full mx-auto"></div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose from our carefully designed rooms and suites, each offering comfort and Mediterranean elegance
+            Choose from our two beautiful apartments, each offering comfort and authentic Sicilian hospitality
           </p>
         </div>
 
-        {/* Rooms Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {rooms.map((room, index) => (
-            <div key={index} className="group bg-card border border-border rounded-2xl overflow-hidden shadow-soft hover:shadow-elegant transition-all duration-500 hover:-translate-y-2">
-              {/* Room Image */}
+        {/* Apartments Grid */}
+        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {apartments.map((apartment, index) => (
+            <div key={index} className="group bg-card border border-border rounded-2xl overflow-hidden shadow-soft hover:shadow-elegant transition-all duration-500">
+              {/* Apartment Image */}
               <div className="relative overflow-hidden">
                 <img
-                  src={room.image}
-                  alt={room.name}
+                  src={apartment.image}
+                  alt={apartment.name}
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-primary">
-                  {room.price}<span className="text-xs text-muted-foreground">/night</span>
+                  {apartment.price}<span className="text-xs text-muted-foreground">/night</span>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
-              {/* Room Content */}
+              {/* Apartment Content */}
               <div className="p-6 space-y-4">
                 <div className="space-y-2">
                   <h3 className="text-xl font-heading font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
-                    {room.name}
+                    {apartment.name}
                   </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {apartment.description}
+                  </p>
                   <div className="flex flex-wrap gap-2">
-                    {room.features.map((feature, idx) => (
+                    {apartment.features.map((feature, idx) => (
                       <span key={idx} className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded-full">
                         {feature}
                       </span>
@@ -79,11 +80,17 @@ export const RoomsSection: React.FC = () => {
 
                 {/* Amenities */}
                 <div className="flex space-x-3">
-                  {room.amenities.map((Amenity, idx) => (
+                  {apartment.amenities.map((Amenity, idx) => (
                     <div key={idx} className="w-8 h-8 bg-muted rounded-full flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-300">
                       <Amenity className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
                     </div>
                   ))}
+                </div>
+
+                {/* Gallery Preview */}
+                <div className="space-y-3">
+                  <h4 className="text-sm font-medium text-foreground">Photo Gallery</h4>
+                  <GalleryPreview onOpenGallery={() => setIsGalleryOpen(true)} />
                 </div>
 
                 {/* Book Button */}
@@ -92,12 +99,18 @@ export const RoomsSection: React.FC = () => {
                   className="w-full group-hover:shadow-soft" 
                   size="lg"
                 >
-                  {t('bookNow')} - {room.price}
+                  Book Now - {apartment.price}
                 </Button>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Image Gallery Modal */}
+        <ImageGallery 
+          isOpen={isGalleryOpen} 
+          onClose={() => setIsGalleryOpen(false)} 
+        />
 
         {/* Additional Info */}
         <div className="mt-16 text-center">

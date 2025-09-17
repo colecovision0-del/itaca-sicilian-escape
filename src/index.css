@@ -149,6 +149,16 @@ Mediterranean boutique hotel theme with warm, elegant tones
   .animate-scale-in {
     animation: scaleIn 0.4s ease-out forwards;
   }
+  
+  /* Gallery scrollbar hide */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @keyframes fadeIn {
