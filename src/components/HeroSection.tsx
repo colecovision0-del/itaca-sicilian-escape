@@ -3,6 +3,7 @@ import { Calendar, MapPin } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Button } from './ui/button';
 import heroImage from '../assets/hero-hotel.jpg';
+const mainImage = 'https://imgur.com/VRwLIA9.jpg';
 
 export const HeroSection: React.FC = () => {
   const { t } = useLanguage();
@@ -12,7 +13,7 @@ export const HeroSection: React.FC = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src={heroImage}
+          src={mainImage}
           alt="Hotel Itaca - Marina di Ragusa, Sicily"
           className="w-full h-full object-cover"
         />

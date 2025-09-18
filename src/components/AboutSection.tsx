@@ -2,6 +2,7 @@ import React from 'react';
 import { Star, Award, Users, Heart } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import beachImage from '../assets/beach-location.jpg';
+const seaImage = 'https://imgur.com/MWv453g.jpg';
 
 export const AboutSection: React.FC = () => {
   const { t } = useLanguage();
@@ -65,7 +66,7 @@ export const AboutSection: React.FC = () => {
           <div className="relative">
             <div className="relative overflow-hidden rounded-2xl shadow-elegant">
               <img
-                src={beachImage}
+                src={seaImage}
                 alt="Marina di Ragusa Beach"
                 className="w-full h-96 lg:h-[500px] object-cover transform hover:scale-105 transition-transform duration-700"
               />

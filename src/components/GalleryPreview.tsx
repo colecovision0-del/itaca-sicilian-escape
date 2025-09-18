@@ -1,6 +1,7 @@
 import React from 'react';
 import { Camera, ImageIcon } from 'lucide-react';
 import { Button } from './ui/button';
+const mainGroundFloor = 'https://imgur.com/opiXPmr.jpg';
 
 // Import first few images for preview
 import image1 from '../assets/gallery/image-1.jpg';
@@ -8,7 +9,7 @@ import image2 from '../assets/gallery/image-2.jpg';
 import image3 from '../assets/gallery/image-3.jpg';
 import image4 from '../assets/gallery/image-4.jpg';
 
-const previewImages = [image1, image2, image3, image4];
+const previewImages = [mainGroundFloor, image2, image3, image4];
 
 interface GalleryPreviewProps {
   onOpenGallery: () => void;

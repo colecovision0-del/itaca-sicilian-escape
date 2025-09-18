@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Dialog, DialogContent } from './ui/dialog';
 import { Button } from './ui/button';
+const mainGroundFloor = 'https://imgur.com/opiXPmr.jpg';
+
 
 // Import all gallery images
 import image1 from '../assets/gallery/image-1.jpg';
@@ -29,7 +31,7 @@ import image22 from '../assets/gallery/image-22.jpg';
 import image23 from '../assets/gallery/image-23.jpg';
 
 const galleryImages = [
-  image1, image2, image3, image4, image5, image6, image7, image8,
+  mainGroundFloor, image2, image3, image4, image5, image6, image7, image8,
   image9, image10, image11, image12, image13, image14, image15,
   image16, image17, image18, image19, image20, image21, image22, image23
 ];

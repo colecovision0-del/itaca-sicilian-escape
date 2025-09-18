@@ -5,6 +5,8 @@ import { Button } from './ui/button';
 import { GalleryPreview } from './GalleryPreview';
 import { ImageGallery } from './ImageGallery';
 import roomImage from '../assets/room-deluxe.jpg';
+const mainGroundFloor = 'https://imgur.com/opiXPmr.jpg';
+const mainFirstFloor = 'https://imgur.com/OOpjz8O.jpg';
 
 export const RoomsSection: React.FC = () => {
   const { t } = useLanguage();
@@ -14,7 +16,7 @@ export const RoomsSection: React.FC = () => {
     {
       name: 'Apartment Marina',
       price: '€120',
-      image: roomImage,
+      image: mainGroundFloor,
       amenities: [Wifi, Coffee, Wind, Car],
       features: ['50 sqm', 'Sea View', 'King Bed', 'Kitchen', 'Balcony'],
       description: 'Spacious apartment with stunning sea views and modern amenities'
@@ -22,7 +24,7 @@ export const RoomsSection: React.FC = () => {
     {
       name: 'Apartment Sicilia',
       price: '€140',
-      image: roomImage,
+      image: mainFirstFloor,
       amenities: [Wifi, Coffee, Waves, Users],
       features: ['60 sqm', 'Garden View', '2 Bedrooms', 'Living Area', 'Terrace'],
       description: 'Family-friendly apartment perfect for longer stays'
