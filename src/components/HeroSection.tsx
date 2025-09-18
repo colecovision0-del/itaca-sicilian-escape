@@ -14,7 +14,7 @@ export const HeroSection: React.FC = () => {
       <div className="absolute inset-0 z-0">
         <img
           src={mainImage}
-          alt="Hotel Itaca - Marina di Ragusa, Sicily"
+          alt="Apartamento Itaca - Marina di Ragusa, Sicily"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/60 via-primary/40 to-transparent"></div>

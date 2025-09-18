@@ -20,7 +20,7 @@ const translations = {
     about: 'About',
     
     // Hero Section
-    heroTitle: 'Welcome to Hotel Itaca',
+    heroTitle: 'Welcome to Apartamento Itaca',
     heroSubtitle: 'Experience Mediterranean luxury in the heart of Marina di Ragusa, Sicily',
     heroDescription: 'Discover our elegant boutique hotel where timeless Sicilian charm meets modern comfort',
     bookNow: 'Book Now',
@@ -28,7 +28,7 @@ const translations = {
     
     // About Section
     aboutTitle: 'Our Story',
-    aboutText: 'Hotel Itaca is a boutique gem nestled in the enchanting Marina di Ragusa, Sicily. Our hotel combines traditional Sicilian hospitality with contemporary elegance, offering guests an unforgettable Mediterranean experience.',
+    aboutText: 'Apartamento Itaca is a boutique gem nestled in the enchanting Marina di Ragusa, Sicily. Our hotel combines traditional Sicilian hospitality with contemporary elegance, offering guests an unforgettable Mediterranean experience.',
     
     // Rooms
     roomsTitle: 'Rooms & Suites',
@@ -58,7 +58,7 @@ const translations = {
     about: 'Chi Siamo',
     
     // Hero Section
-    heroTitle: 'Benvenuti all\'Hotel Itaca',
+    heroTitle: 'Benvenuti all\'Apartamento Itaca',
     heroSubtitle: 'Vivete il lusso mediterraneo nel cuore di Marina di Ragusa, Sicilia',
     heroDescription: 'Scoprite il nostro elegante boutique hotel dove il fascino siciliano si incontra con il comfort moderno',
     bookNow: 'Prenota Ora',
@@ -66,7 +66,7 @@ const translations = {
     
     // About Section
     aboutTitle: 'La Nostra Storia',
-    aboutText: 'Hotel Itaca è una gemma boutique immersa nell\'incantevole Marina di Ragusa, Sicilia. Il nostro hotel combina l\'ospitalità tradizionale siciliana con l\'eleganza contemporanea.',
+    aboutText: 'Apartamento Itaca è una gemma boutique immersa nell\'incantevole Marina di Ragusa, Sicilia. Il nostro hotel combina l\'ospitalità tradizionale siciliana con l\'eleganza contemporanea.',
     
     // Rooms
     roomsTitle: 'Camere e Suite',
@@ -96,7 +96,7 @@ const translations = {
     about: 'Nosotros',
     
     // Hero Section
-    heroTitle: 'Bienvenidos al Hotel Itaca',
+    heroTitle: 'Bienvenidos al Apartamento Itaca',
     heroSubtitle: 'Experimenta el lujo mediterráneo en el corazón de Marina di Ragusa, Sicilia',
     heroDescription: 'Descubre nuestro elegante hotel boutique donde el encanto siciliano se encuentra con el confort moderno',
     bookNow: 'Reservar Ahora',
@@ -104,7 +104,7 @@ const translations = {
     
     // About Section
     aboutTitle: 'Nuestra Historia',
-    aboutText: 'Hotel Itaca es una joya boutique situada en la encantadora Marina di Ragusa, Sicilia. Nuestro hotel combina la hospitalidad tradicional siciliana con la elegancia contemporánea.',
+    aboutText: 'Apartamento Itaca es una joya boutique situada en la encantadora Marina di Ragusa, Sicilia. Nuestro hotel combina la hospitalidad tradicional siciliana con la elegancia contemporánea.',
     
     // Rooms
     roomsTitle: 'Habitaciones y Suites',
