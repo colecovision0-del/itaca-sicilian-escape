@@ -121,10 +121,10 @@ export const ContactSection: React.FC = () => {
               <div className="text-center space-y-2">
                 <Calendar className="h-8 w-8 text-primary mx-auto" />
                 <h3 className="text-2xl font-heading font-semibold text-foreground">
-                  Book Your Stay
+                  {t('contactTitle')}
                 </h3>
                 <p className="text-muted-foreground">
-                  Fill out the form below and we'll get back to you soon
+                  {t('contactSubtitle')}
                 </p>
               </div>
 
@@ -132,7 +132,7 @@ export const ContactSection: React.FC = () => {
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium text-foreground">
-                      Full Name *
+                      {t('fullName')} *
                     </label>
                     <Input
                       id="name"
@@ -146,7 +146,7 @@ export const ContactSection: React.FC = () => {
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="email" className="text-sm font-medium text-foreground">
-                      Email Address *
+                      {t('emailAddress')} *
                     </label>
                     <Input
                       id="email"
@@ -163,7 +163,7 @@ export const ContactSection: React.FC = () => {
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label htmlFor="checkIn" className="text-sm font-medium text-foreground">
-                      Check-in Date
+                      {t('checkInDate')}
                     </label>
                     <Input
                       id="checkIn"
@@ -176,7 +176,7 @@ export const ContactSection: React.FC = () => {
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="checkOut" className="text-sm font-medium text-foreground">
-                      Check-out Date
+                      {t('checkOutDate')}
                     </label>
                     <Input
                       id="checkOut"
@@ -191,7 +191,7 @@ export const ContactSection: React.FC = () => {
 
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-medium text-foreground">
-                    Special Requests
+                    {t('specialRequests')}
                   </label>
                   <Textarea
                     id="message"
