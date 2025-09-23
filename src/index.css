@@ -161,6 +161,144 @@ Mediterranean boutique hotel theme with warm, elegant tones
   }
 }
 
+/* Mediterranean Calendar Styles */
+@layer components {
+  .mediterranean-calendar-container {
+    padding: 2rem;
+  }
+
+  .mediterranean-calendar {
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-family: var(--font-body);
+  }
+
+  .mediterranean-calendar .react-calendar__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    background: hsl(var(--primary));
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    margin: -2rem -2rem 2rem -2rem;
+  }
+
+  .mediterranean-calendar .react-calendar__navigation button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .mediterranean-calendar .react-calendar__navigation button:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .mediterranean-calendar .react-calendar__month-view__weekdays {
+    background: hsl(var(--muted));
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .mediterranean-calendar .react-calendar__month-view__weekdays__weekday {
+    padding: 1rem 0.5rem;
+    text-align: center;
+    font-weight: 600;
+    color: hsl(var(--muted-foreground));
+    text-transform: uppercase;
+    font-size: 0.875rem;
+  }
+
+  .mediterranean-calendar .react-calendar__tile {
+    background: hsl(var(--background));
+    border: 1px solid hsl(var(--border));
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .mediterranean-calendar .react-calendar__tile:hover {
+    background: hsl(var(--accent));
+  }
+
+  .mediterranean-calendar .availability-tile.available-date {
+    background: hsl(var(--primary) / 0.1);
+    border-color: hsl(var(--primary));
+  }
+
+  .mediterranean-calendar .availability-tile.available-date:hover {
+    background: hsl(var(--primary) / 0.2);
+  }
+
+  .mediterranean-calendar .availability-tile.booked-date {
+    background: hsl(var(--destructive) / 0.1);
+    border-color: hsl(var(--destructive));
+    cursor: not-allowed;
+  }
+
+  .mediterranean-calendar .availability-tile.past-date {
+    background: hsl(var(--muted) / 0.5);
+    color: hsl(var(--muted-foreground) / 0.5);
+    cursor: not-allowed;
+  }
+
+  .mediterranean-calendar .availability-tile.today {
+    border-color: hsl(var(--primary));
+    border-width: 2px;
+  }
+
+  .mediterranean-calendar .availability-tile.today::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 8px;
+    height: 8px;
+    background: hsl(var(--primary));
+    border-radius: 50%;
+  }
+
+  .availability-tile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+  }
+
+  @media (max-width: 640px) {
+    .mediterranean-calendar-container {
+      padding: 1rem;
+    }
+
+    .mediterranean-calendar .react-calendar__tile {
+      height: 60px;
+      padding: 0.25rem;
+    }
+
+    .mediterranean-calendar .react-calendar__navigation {
+      margin: -1rem -1rem 1rem -1rem;
+      padding: 0.75rem 1rem;
+    }
+
+    .mediterranean-calendar .react-calendar__navigation button {
+      font-size: 1.25rem;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
