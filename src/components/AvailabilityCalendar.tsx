@@ -108,7 +108,7 @@ export const AvailabilityCalendar: React.FC = () => {
           </h2>
           <div className="w-20 h-1 bg-gradient-sea rounded-full mx-auto"></div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('availabilitySubtitle')} Prices shown are 20% cheaper than Booking.com rates.
+            {t('availabilitySubtitle')} Best rates guaranteed with exclusive online discounts.
           </p>
         </div>
 
@@ -156,7 +156,7 @@ export const AvailabilityCalendar: React.FC = () => {
                 Ready to Book?
               </h3>
               <p className="text-muted-foreground mb-6">
-                Contact us to reserve your perfect Mediterranean getaway. All prices shown are 20% cheaper than booking platforms.
+                Contact us to reserve your perfect Mediterranean getaway. Enjoy our exclusive direct booking rates.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
                 <Button 

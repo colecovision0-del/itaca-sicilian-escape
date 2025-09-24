@@ -1,13 +1,13 @@
 import ICAL from 'ical.js';
 
-// TODO: Replace this URL with your actual Booking.com iCal URL
+// TODO: Replace this URL with your actual iCal feed URL
 // Format: https://ical.booking.com/v1/export=YOUR_PROPERTY_ID
-const BOOKING_ICAL_URL = 'https://ical.booking.com/v1/export=17404527-407f';
+const EXTERNAL_CALENDAR_URL = 'https://ical.booking.com/v1/export=17404527-407f';
 
 export interface AvailabilityData {
   date: string;
   available: boolean;
-  bookingComPrice?: number;
+  standardPrice?: number;
   websitePrice?: number;
 }
 
@@ -17,7 +17,7 @@ export interface AvailabilityResponse {
 
 const parseICalData = async (): Promise<AvailabilityData[]> => {
   try {
-    const response = await fetch(BOOKING_ICAL_URL);
+    const response = await fetch(EXTERNAL_CALENDAR_URL);
     if (!response.ok) {
       throw new Error('Failed to fetch iCal data');
     }
@@ -52,13 +52,13 @@ const parseICalData = async (): Promise<AvailabilityData[]> => {
       const dateStr = date.toISOString().split('T')[0];
       
       const isBooked = bookedDates.has(dateStr);
-      const bookingComPrice = !isBooked ? 100 + Math.floor(Math.random() * 100) : undefined;
+      const standardPrice = !isBooked ? 100 + Math.floor(Math.random() * 100) : undefined;
       
       availabilityData.push({
         date: dateStr,
         available: !isBooked,
-        bookingComPrice,
-        websitePrice: bookingComPrice ? Math.round(bookingComPrice * 0.8) : undefined
+        standardPrice,
+        websitePrice: standardPrice ? Math.round(standardPrice * 0.8) : undefined
       });
     }
     
@@ -71,7 +71,7 @@ const parseICalData = async (): Promise<AvailabilityData[]> => {
 
 export const fetchAvailability = async (): Promise<AvailabilityData[]> => {
   try {
-    // Try to parse iCal data from Booking.com
+    // Try to parse iCal data from external calendar
     return await parseICalData();
   } catch (error) {
     // Fallback to API or mock data
@@ -84,7 +84,7 @@ export const fetchAvailability = async (): Promise<AvailabilityData[]> => {
       const data: AvailabilityResponse = await response.json();
       return data.availabilities.map(item => ({
         ...item,
-        websitePrice: item.bookingComPrice ? Math.round(item.bookingComPrice * 0.8) : undefined
+        websitePrice: item.standardPrice ? Math.round(item.standardPrice * 0.8) : undefined
       }));
     } catch (apiError) {
       console.warn('Using mock availability data:', error);
@@ -103,14 +103,14 @@ const getMockAvailabilityData = (): AvailabilityData[] => {
     date.setDate(date.getDate() + i);
     
     const dateStr = date.toISOString().split('T')[0];
-    const bookingComPrice = 100 + Math.floor(Math.random() * 100); // €100-200
+    const standardPrice = 100 + Math.floor(Math.random() * 100); // €100-200
     const isAvailable = Math.random() > 0.3; // 70% availability rate
     
     mockData.push({
       date: dateStr,
       available: isAvailable,
-      bookingComPrice: isAvailable ? bookingComPrice : undefined,
-      websitePrice: isAvailable ? Math.round(bookingComPrice * 0.8) : undefined
+      standardPrice: isAvailable ? standardPrice : undefined,
+      websitePrice: isAvailable ? Math.round(standardPrice * 0.8) : undefined
     });
   }
   
