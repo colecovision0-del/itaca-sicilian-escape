@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { Mail, Phone, MapPin, Calendar, Clock } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -6,17 +6,23 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { useToast } from '../hooks/use-toast';
+import { useContactStore } from '../hooks/useContactStore';
 
 export const ContactSection: React.FC = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
+  const { checkInDate, checkOutDate, setDates } = useContactStore();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    checkIn: '',
-    checkOut: '',
+    checkIn: checkInDate,
+    checkOut: checkOutDate,
     message: ''
   });
+
+  useEffect(() => {
+    setFormData(prev => ({ ...prev, checkIn: checkInDate, checkOut: checkOutDate }));
+  }, [checkInDate, checkOutDate]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,9 +41,10 @@ export const ContactSection: React.FC = () => {
           console.log(result.text);
           toast({
             title: "Booking Request Sent!",
-            description: "We'll get back to you within 24 hours to confirm your reservation.",
-          });
-          setFormData({ name: '', email: '', checkIn: '', checkOut: '', message: '' });
+        description: "We'll get back to you within 24 hours to confirm your reservation.",
+      });
+      setFormData({ name: '', email: '', checkIn: '', checkOut: '', message: '' });
+      setDates('', '');
       }, (error) => {
           console.log(error.text);
           toast({

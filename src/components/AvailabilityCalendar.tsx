@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from 'lucide-reac
 import { useLanguage } from '../contexts/LanguageContext';
 import { Button } from './ui/button';
 import { fetchAvailability, type AvailabilityData } from '../services/availabilityService';
+import { useContactStore } from '../hooks/useContactStore';
 import 'react-calendar/dist/Calendar.css';
 
 type ValuePiece = Date | null;
@@ -11,9 +12,10 @@ type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 export const AvailabilityCalendar: React.FC = () => {
   const { t } = useLanguage();
-  const [value, setValue] = useState<Value>(new Date());
+  const [value, setValue] = useState<Value>(null);
   const [availabilityData, setAvailabilityData] = useState<Record<string, AvailabilityData>>({});
   const [loading, setLoading] = useState(true);
+  const { setDates } = useContactStore();
 
   useEffect(() => {
     const loadAvailability = async () => {
@@ -67,6 +69,19 @@ export const AvailabilityCalendar: React.FC = () => {
     );
   };
 
+  const handleDateChange = (newValue: Value) => {
+    setValue(newValue);
+    if (Array.isArray(newValue) && newValue[0] && newValue[1]) {
+      const checkIn = newValue[0].toISOString().split('T')[0];
+      const checkOut = newValue[1].toISOString().split('T')[0];
+      setDates(checkIn, checkOut);
+      // Scroll to contact section
+      setTimeout(() => {
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  };
+
   const tileClassName = ({ date }: { date: Date }) => {
     const dateKey = formatDateKey(date);
     const availability = availabilityData[dateKey];
@@ -117,8 +132,9 @@ export const AvailabilityCalendar: React.FC = () => {
           <div className="bg-card border border-border rounded-2xl shadow-soft overflow-hidden">
             <div className="mediterranean-calendar-container">
               <Calendar
-                onChange={setValue}
+                onChange={handleDateChange}
                 value={value}
+                selectRange={true}
                 tileContent={tileContent}
                 tileClassName={tileClassName}
                 prevLabel={<ChevronLeft className="h-5 w-5" />}
