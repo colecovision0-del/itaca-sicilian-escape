@@ -1,4 +1,5 @@
 import ICAL from 'ical.js';
+import { calculatePrice } from './pricingService';
 
 // TODO: Replace this URL with your actual iCal feed URL
 // Format: https://ical.booking.com/v1/export=YOUR_PROPERTY_ID
@@ -7,7 +8,6 @@ const EXTERNAL_CALENDAR_URL = 'https://ical.booking.com/v1/export=17404527-407f'
 export interface AvailabilityData {
   date: string;
   available: boolean;
-  standardPrice?: number;
   websitePrice?: number;
 }
 
@@ -47,18 +47,17 @@ const parseICalData = async (): Promise<AvailabilityData[]> => {
     const today = new Date();
     
     for (let i = 0; i < 90; i++) {
-      const date = new Date(today);
-      date.setDate(date.getDate() + i);
-      const dateStr = date.toISOString().split('T')[0];
+      const currentDate = new Date(today);
+      currentDate.setDate(currentDate.getDate() + i);
+      const dateStr = currentDate.toISOString().split('T')[0];
       
       const isBooked = bookedDates.has(dateStr);
-      const standardPrice = !isBooked ? 100 + Math.floor(Math.random() * 100) : undefined;
+      const websitePrice = !isBooked ? calculatePrice(currentDate) : undefined;
       
       availabilityData.push({
         date: dateStr,
         available: !isBooked,
-        standardPrice,
-        websitePrice: standardPrice ? Math.round(standardPrice * 0.8) : undefined
+        websitePrice
       });
     }
     
@@ -82,10 +81,7 @@ export const fetchAvailability = async (): Promise<AvailabilityData[]> => {
       }
       
       const data: AvailabilityResponse = await response.json();
-      return data.availabilities.map(item => ({
-        ...item,
-        websitePrice: item.standardPrice ? Math.round(item.standardPrice * 0.8) : undefined
-      }));
+      return data.availabilities;
     } catch (apiError) {
       console.warn('Using mock availability data:', error);
       return getMockAvailabilityData();
@@ -99,18 +95,17 @@ const getMockAvailabilityData = (): AvailabilityData[] => {
   
   // Generate mock data for next 3 months
   for (let i = 0; i < 90; i++) {
-    const date = new Date(today);
-    date.setDate(date.getDate() + i);
+    const currentDate = new Date(today);
+    currentDate.setDate(currentDate.getDate() + i);
     
-    const dateStr = date.toISOString().split('T')[0];
-    const standardPrice = 100 + Math.floor(Math.random() * 100); // €100-200
+    const dateStr = currentDate.toISOString().split('T')[0];
     const isAvailable = Math.random() > 0.3; // 70% availability rate
+    const websitePrice = isAvailable ? calculatePrice(currentDate) : undefined;
     
     mockData.push({
       date: dateStr,
       available: isAvailable,
-      standardPrice: isAvailable ? standardPrice : undefined,
-      websitePrice: isAvailable ? Math.round(standardPrice * 0.8) : undefined
+      websitePrice
     });
   }
   
