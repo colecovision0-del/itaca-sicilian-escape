@@ -74,6 +74,7 @@ const translations = {
     address: 'Via dell\'Arancio, 20, Marina di Ragusa, Sicilia, Italia',
     phone: '+39 0932 123456',
     email: 'info@hotelitaca.com',
+    submitRequest: 'Submit request',
     
     // Footer
     followUs: 'Follow Us',
@@ -143,6 +144,7 @@ const translations = {
     address: 'Via dell\'Arancio, 20, Marina di Ragusa, Sicilia, Italia',
     phone: '+39 0932 123456',
     email: 'info@hotelitaca.com',
+    submitRequest: 'Invia richiesta',
     
     // Footer
     followUs: 'Seguici',
@@ -212,6 +214,7 @@ const translations = {
     address: 'Via dell\'Arancio, 20, Marina di Ragusa, Sicilia, Italia',
     phone: '+39 0932 123456',
     email: 'info@hotelitaca.com',
+    submitRequest: 'Envía petición',
     
     // Footer
     followUs: 'Síguenos',

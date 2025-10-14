@@ -203,7 +203,7 @@ export const ContactSection: React.FC = () => {
                   size="lg" 
                   className="w-full"
                 >
-                  Amuninni!
+                  {t('submitRequest')}
                 </Button>
               </form>
             </div>
